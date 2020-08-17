@@ -3,7 +3,7 @@ import {battle} from '../utils/api';
 import {FaCompass, FaBriefcase, FaUsers, FaUser, FaUserFriends, FaCode } from 'react-icons/fa';
 import Card from './Card';
 import PropTypes from 'prop-types';
-
+import Loading from './Loading';
 
 function ProfileList ({profile}) {
   return (
@@ -75,9 +75,7 @@ export default class Results extends React.Component {
     const { winner, loser, error, loading} = this.state;
 
     if(loading === true) {
-      return (
-        <div>LOADING</div>
-      )
+      return  <Loading />
     } 
     if(error) {
       return (
@@ -86,7 +84,8 @@ export default class Results extends React.Component {
     }
 
     return (
-      <div className="grid space-around container-sm">
+      <React.Fragment>
+      <div className="grid space-around container-sm">     
         {/* Winner Card */}
         <Card 
             header={winner.score === loser.score ? 'Tie' : 'Winner'}
@@ -111,6 +110,19 @@ export default class Results extends React.Component {
               <ProfileList profile={loser.profile} />
           </Card>
         </div>
+        <button
+            className="btn dark-btn btn-space"
+            onClick={this.props.onReset}
+          >
+            Reset
+        </button>
+        </React.Fragment>
       )
   }
+}
+
+Results.propTypes = {
+  playerOne: PropTypes.string.isRequired,
+  playerTwo: PropTypes.string.isRequired,
+  onReset: PropTypes.func.isRequired
 }
