@@ -4,6 +4,7 @@ import {fetchPopularRepos} from '../utils/api';
 import { FaUser, FaStar, FaCodeBranch, FaExclamationTriangle} from 'react-icons/fa';
 import Card from './Card';
 import Loading from './Loading';
+import Tooltip from './Tooltip';
 
 
 function LanguageNav ({selected, onUpdateLanguage}) {
@@ -46,13 +47,15 @@ function ReposGrid ({repos}) {
                 >
                   <ul className="card-list">
                     <li>
-                        <FaUser color='red' size={22}/>
-                        <a href={`https://github.com/${login}`}>
-                          {login}
-                        </a>
+                      <Tooltip text="Github Username">
+                          <FaUser color='red' size={22}/>
+                          <a href={`https://github.com/${login}`}>
+                              {login}
+                          </a>
+                      </Tooltip>
                     </li>
                     <li>  
-                      <FaUser color='green' size={22}/>
+                      <FaStar color='green' size={22}/>
                       {stargazers_count.toLocaleString()} Stars
                     </li>
                     <li>  
