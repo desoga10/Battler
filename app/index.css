@@ -119,6 +119,12 @@ li {
   margin-bottom: 8px;
 }
 
+.dark{
+  color: #dadada;
+  background-color: black;
+  min-height: 100%;
+}
+
 .instructions-container {
   margin: 100px 0;
 }
