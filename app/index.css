@@ -40,6 +40,22 @@ li {
   color: inherit;
 }
 
+.nav li{
+  margin-right: 10px;
+}
+
+.spacer{
+  margin-right: 10px;
+}
+
+.row-nav{
+  display: flex;
+}
+
+.space-between{
+  justify-content:space-between;
+}
+
 .grid {
   display: flex;
   flex-wrap: wrap;
